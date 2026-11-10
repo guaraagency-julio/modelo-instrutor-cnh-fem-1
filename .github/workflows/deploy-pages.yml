@@ -23,6 +23,12 @@ jobs:
     steps:
       - name: Baixar código
         uses: actions/checkout@v4
+      - name: Verificar arquivos e sintaxe JavaScript
+        run: |
+          test -s index.html
+          test -s styles.css
+          test -s script.js
+          node --check script.js
       - name: Preparar GitHub Pages
         uses: actions/configure-pages@v5
       - name: Enviar arquivos estáticos
